@@ -1,2 +1,2 @@
-# sytriz.github.io
+# einspommes.github.io
 Static content for blog
