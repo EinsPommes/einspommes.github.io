@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Sytriz&#39;s Blog</title>
+    <link>https://blog.sytriz.com/</link>
+    <description>Recent content on Sytriz&#39;s Blog</description>
+    <generator>Hugo -- 0.135.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 27 Sep 2024 14:27:26 -0500</lastBuildDate>
+    <atom:link href="https://blog.sytriz.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>1 Year With Linux</title>
+      <link>https://blog.sytriz.com/posts/1-year-with-linux/</link>
+      <pubDate>Fri, 27 Sep 2024 14:27:26 -0500</pubDate>
+      <guid>https://blog.sytriz.com/posts/1-year-with-linux/</guid>
+      <description>&lt;h3 id=&#34;-__video__---1-year-linux-challenge-odyseehttpsodyshlhgdqnilgg--youtubehttpsyoutube-pyvwk2hqeisirn2pon6tfkhxs99n&#34;&gt;🎥 &lt;strong&gt;Video&lt;/strong&gt; - 1 Year Linux Challenge: &lt;a href=&#34;https://ody.sh/lHGDQNiLGg&#34;&gt;Odysee&lt;/a&gt; | &lt;a href=&#34;https://youtu.be/-pYvWk2hqEI?si=RN2Pon6tFkHXS99n&#34;&gt;YouTube&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&#34;time-for-a-change&#34;&gt;Time for a change&lt;/h2&gt;
+&lt;p&gt;Last year, around this time, I was fed up with Windows and wanted an alternative. I had previous experience with Linux, but I never used it as my daily driver. I finally decided to bite the bullet and make the switch.&lt;/p&gt;
+&lt;h2 id=&#34;1-linux-mint-&#34;&gt;1. Linux Mint 🍀&lt;/h2&gt;
+&lt;h4 id=&#34;september---december-2024-3-months&#34;&gt;September - December, 2024: (3 months)&lt;/h4&gt;
+&lt;p&gt;Based off recommendations on the internet, I decided to install Mint. Mint is a beginner friendly Ubuntu-based distro. Also, its interface, the Cinnamon desktop environment, is very similar to Windows, so it came quite naturally to me.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>New Blog!</title>
+      <link>https://blog.sytriz.com/posts/new-channel/</link>
+      <pubDate>Fri, 27 Sep 2024 10:02:51 -0500</pubDate>
+      <guid>https://blog.sytriz.com/posts/new-channel/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

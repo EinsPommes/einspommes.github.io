@@ -1,0 +1,9 @@
+---
+title: "New Blog!"
+date: 2024-09-27T10:02:51-05:00
+draft: false
+cover:
+ image: img/ethernet-port1.png
+tags: ["linux", "gaming"]
+categories: ["tech"]
+---

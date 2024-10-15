@@ -1,0 +1,53 @@
+---
+title: "1 Year With Linux"
+date: 2024-09-27T14:27:26-05:00
+draft: false
+tags: ["linux", "long-term"]
+categories: ["linux"]
+cover:
+ image: img/1-year-linux-challenge.png
+---
+### 🎥 __Video__ - 1 Year Linux Challenge - [Odysee](https://ody.sh/lHGDQNiLGg) | [YouTube](https://youtu.be/-pYvWk2hqEI?si=RN2Pon6tFkHXS99n)
+
+## Time for a change
+Last year, around this time, I was fed up with Windows and wanted an alternative. I had previous experience with Linux, but I never used it as my daily driver. I finally decided to bite the bullet and make the switch.
+## 1. Linux Mint 🍀
+#### September - December, 2024: (3 months)
+
+Based off recommendations on the internet, I decided to install Mint. Mint is a beginner friendly Ubuntu-based distro. Also, its interface, the Cinnamon desktop environment, is very similar to Windows, so it came quite naturally to me.
+
+Overall, I had a pretty good experience with Mint. Most issues I experienced weren't distro-specific. I got to the point where I felt comfortable uninstalling Windows from my secondary drive.
+
+## 2. Debian ⭕ 
+#### January - April + August - Present, 2024: (6 months)
+
+As I learned more about Linux, I got the urge to distro-hop to something slightly less plug-and-play. Debian is the granddaddy of Linux distributions. It serves as the base for the majority of other distros (e.g. Ubuntu). The stable branch (currently Bookworm) remains relatively outdated, which makes it crazy stable.
+
+Debian served me very well (I'm using it as I write this blog post right now). On Debian is where most of my Linux learning took place. I experimented with different desktop environments/window managers and lot of other fun things. I actually came crawling back to good old Debian after switching off it for awhile.
+
+## 3. OpenSUSE Tumbleweed 	🐍
+#### May - July, 2024: (3 months)
+
+I eventually got bored with Debian's crusty oldness and wanted to switch to a rolling-release distro. OpenSUSE Tumbleweed is a rolling-release distro that uses the zypper package manager and ".rmp" packages. This was a learning experience for me because I was used to apt and ".deb" packages. I installed a minimal server as a base and slapped the OpenBox window manager on top. This was extremely complicated, yet fun to start from a completely bare system and build it up.
+
+I eventually got comfortable using the system, but I had some gripes. Package availability was lacking and the Open Build Service community package repository usually wasn't too up to date. Also, SUSE just has some oddities with the way absolutely everything is through YaST, and zypper just kind of sucks. Overall, it wasn't too bad, but I missed Debian.
+
+## Linux Issues ❌
+Although I loved using Linux I did have some issues/road bumps along the way. These problems were mainly distro-agnostic.
+- Microsoft office (O365 online sucks)
+- Email clients (Microsoft Exchange emails)
+- Mounting drives (early skill issue)
+- Lack of driver support (GoXLR and other peripherals)
+- Games with invasive anti-cheat are borked
+
+## Linux Pros ✅
+For me, the pros far outweighed the cons. There are many more that I didn't list here.
+- Superior customizability
+- Enhanced privacy
+- FOSS
+- Great community
+- Never stop learning
+
+## Conclusion
+Without a question, I am sticking with Linux for the foreseeable future. I came into this just wanting a drop-in replacement for Windows. Little did I know, Linux would become one of my primary hobbies. I no longer look at an operating system as just something I use to get work done. Linux made using a computer fun again for me. I am in complete control of my system, and whenever I get bored I can switch it up!
+
