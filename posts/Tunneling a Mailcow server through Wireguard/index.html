@@ -21,7 +21,9 @@
     <meta name="msapplication-TileColor" content="#2e2e33">
     <link rel="alternate" hreflang="en" href="https://einspommes.github.io/posts/Tunneling%20a%20Mailcow%20server%20through%20Wireguard/">
     
- <noscript>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <noscript>
         <style>
             #theme-toggle,
             .top-link {
@@ -63,7 +65,7 @@
     if (localStorage.getItem("pref-theme") === "dark") {
         document.body.classList.add('dark');
     } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
+        document.body.classList.remove('dark');
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.body.classList.add('dark');
     }
@@ -126,12 +128,8 @@
     <div class="post-meta"><span title='2024-07-18'>July 18, 2024</span> · By Mika · 13 minutes</div>
   </header> 
 
-  <!-- The Gist block is added here -->
   <div class="container">
-    <h2>How to Tunneling a Mailcow server through Wireguard</h2>
-    <p>July 18, 2024 · By Mika · 13 minutes</p>
-    <!-- The Gist-Script is included here -->
-    <script src="https://gist.github.com/EinsPommes/3e18398ca50cfd38e7fdd3b36a38cc66.js"></script>
+    <div id="content"></div>
   </div>
 
   <footer class="post-footer">
@@ -159,18 +157,18 @@
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
         menu.scrollLeft = localStorage.getItem("menu-scroll-position");
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
+        };
     }
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
             e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
+            var id = this.getAttribute("href").substring(1);
             if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                 document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
                     behavior: "smooth"
@@ -200,14 +198,31 @@
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
+        if (document.body.classList.contains("dark")) {
             document.body.classList.remove('dark');
             localStorage.setItem("pref-theme", 'light');
         } else {
             document.body.classList.add('dark');
             localStorage.setItem("pref-theme", 'dark');
         }
-    })
+    });
+</script>
+<script>
+    async function loadMarkdown(file) {
+        try {
+            const response = await fetch(file);
+            if (!response.ok) {
+                throw new Error('Network response was not OK');
+            }
+            const text = await response.text();
+            const html = marked(text);
+            document.getElementById('content').innerHTML = html;
+        } catch (error) {
+            console.error('Error loading the Markdown file:', error);
+        }
+    }
+
+    loadMarkdown('https://gist.githubusercontent.com/sussycatgirl/4bcd6508dedd21ea21ec494499c92618/raw/06c5bfe3e4cfee5fa568930cc25fc2c44e0d78a6/mailcow_wg.md');
 </script>
 </body>
 
