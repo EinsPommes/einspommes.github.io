@@ -93,7 +93,7 @@
   <div class="container">
     <div id="content">
       <h1>Tunneling a Mailcow server through Wireguard</h1>
-      <p>Mailcow is a easy to set up Mailserver running in Docker.</p>
+      <p>Mailcow is an easy to set up Mailserver running in Docker.</p>
       <p>Unfortunately, most ISPs block port 25. In addition to that, residential IP addresses are generally blacklisted, making it impossible to self-host a mailserver at home. Mailcow by itself requires at least 6GB of RAM, which makes hosting it on a VPS rather expensive.</p>
       <p>The solution: Running Mailcow at home and tunneling its traffic through a cheap VPS.</p>
       <p>The final setup will look like this:</p>
@@ -111,7 +111,8 @@
       <p>You'll need a basic understanding of networking, DNS, and Docker to follow along, plus access to a VPS which is able to send and receive mail. Most hosting providers block port 25, 465, and 587 by default in order to prevent spam. You should also <a href="https://mxtoolbox.com/blacklists.aspx">make sure the server's IP is not on any blacklist</a> - Otherwise, other servers will refuse to exchange mail with you.</p>
       <p>With that out of the way - <strong>Let's get started!</strong></p>
       <h2>DNS setup and Reverse DNS</h2>
-      <p>Traditional DNS allows you to point a domain name to an IP address. rDNS is, as the name suggests, a way to have an IP address point to a domain name instead. To find out which domain name your VPS's IP points to, run <code>host &lt;youripaddress&gt;</code>.</p>
+      <p>Traditional DNS allows you to point a domain name to an IP address. rDNS is, as the name suggests, a way to have an IP address point to a domain name instead. To find out which domain name your VPS's IP points to, run:</p>
+      <pre><code>host &lt;youripaddress&gt;</code></pre>
       <p>Example output:</p>
       <pre><code>$ host 1.1.1.1
 1.1.1.1.in-addr.arpa domain name pointer one.one.one.one.
@@ -121,7 +122,7 @@
       <p>In any case, the domain name your rDNS points to will be your Mailcow hostname (and FQDN) - Take note of it, you will need it in the next step.</p>
       <hr>
       <p>With that out of the way, <a href="https://mailcow.github.io/mailcow-dockerized-docs/prerequisite/prerequisite-dns/">follow Mailcow's minimal DNS configuration guide</a>, most importantly the <code>A</code>, <code>MX</code>, and SPF/DMARC <code>TXT</code> records. Do not touch DKIM yet, as Mailcow hasn't yet generated a key. Also ignore <code>autoconfig</code> and <code>autodiscover</code> for now.</p>
-      <p>TL;DR:</p>
+      <h2>DNS Configuration Summary:</h2>
       <pre><code># Name              Type       Value
 mail                IN A       YOUR_VPS_IP
 @                   IN MX 10   mail.example.org.
@@ -207,5 +208,4 @@ _dmarc              IN TXT     "v=DMARC1; p=reject; rua=mailto:your_contact_emai
     });
 </script>
 </body>
-
 </html>
