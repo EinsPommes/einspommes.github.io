@@ -131,6 +131,9 @@
   <div class="container">
     <div id="content"></div>
     <div id="script-content"></div>
+    <div id="script-smtp"></div>
+    <div id="script-wg-mailcow"></div>
+    <div id="script-wg"></div>
   </div>
 
   <footer class="post-footer">
@@ -223,13 +226,13 @@
         }
     }
 
-    loadMarkdown('https://raw.githubusercontent.com/EinsPommes/einspommes.github.io/posts/Tunneling%20a%20Mailcow%20server%20through%20Wireguard/mailcow_wg.md');
-    loadScriptContent('https://raw.githubusercontent.com/EinsPommes/einspommes.github.io/posts/Tunneling%20a%20Mailcow%20server%20through%20Wireguard/smtp-iptables.sh');
-    loadScriptContent('https://raw.githubusercontent.com/EinsPommes/einspommes.github.io/posts/Tunneling%20a%20Mailcow%20server%20through%20Wireguard/wg-mailcow.conf');
-    loadScriptContent('https://raw.githubusercontent.com/EinsPommes/einspommes.github.io/posts/Tunneling%20a%20Mailcow%20server%20through%20Wireguard/wg.conf');
+    loadMarkdown('https://raw.githubusercontent.com/EinsPommes/einspommes.github.io/main/posts/Tunneling%20a%20Mailcow%20server%20through%20Wireguard/mailcow_wg.md');
+    loadScriptContent('https://raw.githubusercontent.com/EinsPommes/einspommes.github.io/main/posts/Tunneling%20a%20Mailcow%20server%20through%20Wireguard/smtp-iptables.sh', 'script-smtp');
+    loadScriptContent('https://raw.githubusercontent.com/EinsPommes/einspommes.github.io/main/posts/Tunneling%20a%20Mailcow%20server%20through%20Wireguard/wg-mailcow.conf', 'script-wg-mailcow');
+    loadScriptContent('https://raw.githubusercontent.com/EinsPommes/einspommes.github.io/main/posts/Tunneling%20a%20Mailcow%20server%20through%20Wireguard/wg.conf', 'script-wg');
 </script>
 <script>
-    async function loadScriptContent(file) {
+    async function loadScriptContent(file, elementId) {
         try {
             const response = await fetch(file);
             if (!response.ok) {
@@ -237,7 +240,7 @@
             }
             const text = await response.text();
             const html = `<pre><code>${text}</code></pre>`;
-            document.getElementById('script-content').innerHTML = html;
+            document.getElementById(elementId).innerHTML = html;
         } catch (error) {
             console.error('Error loading the script file:', error);
         }
