@@ -12,10 +12,13 @@
       <link>https://einspommes.github.io/posts/first-post/</link>
       <pubDate>Fri, 04 Oct 2024 12:55:29 -0500</pubDate>
       <guid>https://blog.sytriz.com/posts/my-homelab/</guid>
-      <description>&lt;h3 id=&#34;-__video__---homelab-tour-odyseehttpsodyshfrrjih3imp--youtubehttpsyoutubert_jd-x7kmisiix5da8uvac1i6x9e&#34;&gt;🎥 &lt;strong&gt;Video&lt;/strong&gt; - Homelab Tour: &lt;a href=&#34;https://ody.sh/frrJIh3IMP&#34;&gt;Odysee&lt;/a&gt; | &lt;a href=&#34;https://youtu.be/Rt_JD-x7kmI?si=Ix5da8UVac1I6x9e&#34;&gt;YouTube&lt;/a&gt;&lt;/h3&gt;
-&lt;h2 id=&#34;humble-beginnings&#34;&gt;Humble beginnings&lt;/h2&gt;
-&lt;p&gt;In 2015, My &amp;ldquo;homelab&amp;rdquo; started out as a 2011 Dell Inspiron hosting a Minecraft server running Windows 8. I vividly remember being beyond confused at why I could connect to the server locally no problem but my friends couldn&amp;rsquo;t join over the internet. 12 year old Sytriz didn&amp;rsquo;t quite understand what port forwarding was yet&amp;hellip;&lt;/p&gt;
-&lt;p&gt;Its fair to say I have came a long way since then. My homelab has evolved with my needs as I&amp;rsquo;ve grown up and expanded my technical skill set. Today my homelab is finally at a state where I feel that sharing my setup and configuration details could potentially help beginners get started and/or inspired.&lt;/p&gt;</description>
+      <description></description>
+    </item>
+    <title>Tunneling a Mailcow server through Wireguard</title>
+      <link>https://einspommes.github.io/posts/Tunneling%20a%20Mailcow%20server%20through%20Wireguard/</link>
+      <pubDate>Fri, 04 Oct 2024 12:55:29 -0500</pubDate>
+      <guid>https://einspommes.github.io/posts/Tunneling%20a%20Mailcow%20server%20through%20Wireguard/</guid>
+      <description></description>
     </item>
   </channel>
 </rss>
