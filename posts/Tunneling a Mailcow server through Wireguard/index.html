@@ -20,44 +20,6 @@
     <meta name="theme-color" content="#2e2e33">
     <meta name="msapplication-TileColor" content="#2e2e33">
     <link rel="alternate" hreflang="en" href="https://einspommes.github.io/posts/Tunneling%20a%20Mailcow%20server%20through%20Wireguard/">
-    
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
-    <noscript>
-        <style>
-            #theme-toggle,
-            .top-link {
-                display: none;
-            }
-        </style>
-        <style>
-            @media (prefers-color-scheme: dark) {
-                :root {
-                    --theme: rgb(29, 30, 32);
-                    --entry: rgb(46, 46, 51);
-                    --primary: rgb(218, 218, 219);
-                    --secondary: rgb(155, 156, 157);
-                    --tertiary: rgb(65, 66, 68);
-                    --content: rgb(196, 196, 197);
-                    --code-block-bg: rgb(46, 46, 51);
-                    --code-bg: rgb(55, 56, 62);
-                    --border: rgb(51, 51, 51);
-                }
-
-                .list {
-                    background: var(--theme);
-                }
-
-                .list:not(.dark)::-webkit-scrollbar-track {
-                    background: 0 0;
-                }
-
-                .list:not(.dark)::-webkit-scrollbar-thumb {
-                    border-color: var(--theme);
-                }
-            }
-        </style>
-    </noscript>
 </head>
 
 <body class="" id="top">
@@ -129,11 +91,44 @@
   </header> 
 
   <div class="container">
-    <div id="content"></div>
-    <div id="script-content"></div>
-    <div id="script-smtp"></div>
-    <div id="script-wg-mailcow"></div>
-    <div id="script-wg"></div>
+    <div id="content">
+      <h1>Tunneling a Mailcow server through Wireguard</h1>
+      <p>Mailcow is a easy to set up Mailserver running in Docker.</p>
+      <p>Unfortunately, most ISPs block port 25. In addition to that, residential IP addresses are generally blacklisted, making it impossible to self-host a mailserver at home. Mailcow by itself requires at least 6GB of RAM, which makes hosting it on a VPS rather expensive.</p>
+      <p>The solution: Running Mailcow at home and tunneling its traffic through a cheap VPS.</p>
+      <p>The final setup will look like this:</p>
+      <pre><code>&lt;------[ SMTP out ]-----\
+-------[ SMTP in ]---> [ VPS ] &lt;----[IMAP/POP3]----
+                        ^   |
+                        |   \--------[ FRP proxy ]--------\      /---[ :80, :443 ]---
+                        V                                 |      |
+             [ Wireguard Container ] &lt;-&gt; [ Postfix ]      |   [ Reverse Proxy ]
+                                            |   ^         |      |
+                                            V   |         V      V
+                                        [ Rest of the Mailcow Stack ]
+</code></pre>
+      <p>We will use Wireguard to tunnel SMTP traffic to and from the Postfix container, and optionally <a href="https://github.com/fatedier/frp">FRP</a> to proxy IMAP and POP3.</p>
+      <p>You'll need a basic understanding of networking, DNS, and Docker to follow along, plus access to a VPS which is able to send and receive mail. Most hosting providers block port 25, 465, and 587 by default in order to prevent spam. You should also <a href="https://mxtoolbox.com/blacklists.aspx">make sure the server's IP is not on any blacklist</a> - Otherwise, other servers will refuse to exchange mail with you.</p>
+      <p>With that out of the way - <strong>Let's get started!</strong></p>
+      <h2>DNS setup and Reverse DNS</h2>
+      <p>Traditional DNS allows you to point a domain name to an IP address. rDNS is, as the name suggests, a way to have an IP address point to a domain name instead. To find out which domain name your VPS's IP points to, run <code>host &lt;youripaddress&gt;</code>.</p>
+      <p>Example output:</p>
+      <pre><code>$ host 1.1.1.1
+1.1.1.1.in-addr.arpa domain name pointer one.one.one.one.
+</code></pre>
+      <p>Indicating that <code>1.1.1.1</code> points to <code>one.one.one.one.</code></p>
+      <p>Your VPS provider likely offers you a way to point your IP to a different domain. If you choose to do this, make sure to create an A record on the new domain name which points to your IP.</p>
+      <p>In any case, the domain name your rDNS points to will be your Mailcow hostname (and FQDN) - Take note of it, you will need it in the next step.</p>
+      <hr>
+      <p>With that out of the way, <a href="https://mailcow.github.io/mailcow-dockerized-docs/prerequisite/prerequisite-dns/">follow Mailcow's minimal DNS configuration guide</a>, most importantly the <code>A</code>, <code>MX</code>, and SPF/DMARC <code>TXT</code> records. Do not touch DKIM yet, as Mailcow hasn't yet generated a key. Also ignore <code>autoconfig</code> and <code>autodiscover</code> for now.</p>
+      <p>TL;DR:</p>
+      <pre><code># Name              Type       Value
+mail                IN A       YOUR_VPS_IP
+@                   IN MX 10   mail.example.org.
+@                   IN TXT     "v=spf1 mx a -all"
+_dmarc              IN TXT     "v=DMARC1; p=reject; rua=mailto:your_contact_email@example.org"
+</code></pre>
+    </div>
   </div>
 
   <footer class="post-footer">
@@ -210,41 +205,6 @@
             localStorage.setItem("pref-theme", 'dark');
         }
     });
-</script>
-<script>
-    async function loadMarkdown(file) {
-        try {
-            const response = await fetch(file);
-            if (!response.ok) {
-                throw new Error('Network response was not OK');
-            }
-            const text = await response.text();
-            const html = marked(text);
-            document.getElementById('content').innerHTML = html;
-        } catch (error) {
-            console.error('Error loading the Markdown file:', error);
-        }
-    }
-
-    loadMarkdown('https://raw.githubusercontent.com/EinsPommes/einspommes.github.io/posts/Tunneling%20a%20Mailcow%20server%20through%20Wireguard/mailcow_wg.md');
-    loadScriptContent('https://raw.githubusercontent.com/EinsPommes/einspommes.github.io/posts/Tunneling%20a%20Mailcow%20server%20through%20Wireguard/smtp-iptables.sh', 'script-smtp');
-    loadScriptContent('https://raw.githubusercontent.com/EinsPommes/einspommes.github.io/posts/Tunneling%20a%20Mailcow%20server%20through%20Wireguard/wg-mailcow.conf', 'script-wg-mailcow');
-    loadScriptContent('https://raw.githubusercontent.com/EinsPommes/einspommes.github.io/posts/Tunneling%20a%20Mailcow%20server%20through%20Wireguard/wg.conf', 'script-wg');
-</script>
-<script>
-    async function loadScriptContent(file, elementId) {
-        try {
-            const response = await fetch(file);
-            if (!response.ok) {
-                throw new Error('Network response was not OK');
-            }
-            const text = await response.text();
-            const html = `<pre><code>${text}</code></pre>`;
-            document.getElementById(elementId).innerHTML = html;
-        } catch (error) {
-            console.error('Error loading the script file:', error);
-        }
-    }
 </script>
 </body>
 
