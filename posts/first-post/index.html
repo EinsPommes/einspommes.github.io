@@ -20,213 +20,196 @@
     <meta name="theme-color" content="#2e2e33">
     <meta name="msapplication-TileColor" content="#2e2e33">
     <link rel="alternate" hreflang="en" href="https://einspommes.github.io/posts/first-post/">
-    <noscript>
-        <style>
-            #theme-toggle,
-            .top-link {
-                display: none;
+   <noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
             }
-        </style>
-        <style>
-            @media (prefers-color-scheme: dark) {
-                :root {
-                    --theme: rgb(29, 30, 32);
-                    --entry: rgb(46, 46, 51);
-                    --primary: rgb(218, 218, 219);
-                    --secondary: rgb(155, 156, 157);
-                    --tertiary: rgb(65, 66, 68);
-                    --content: rgb(196, 196, 197);
-                    --code-block-bg: rgb(46, 46, 51);
-                    --code-bg: rgb(55, 56, 62);
-                    --border: rgb(51, 51, 51);
-                }
 
-                .list {
-                    background: var(--theme);
-                }
-
-                .list:not(.dark)::-webkit-scrollbar-track {
-                    background: 0 0;
-                }
-
-                .list:not(.dark)::-webkit-scrollbar-thumb {
-                    border-color: var(--theme);
-                }
+            .list {
+                background: var(--theme);
             }
-        </style>
-    </noscript>
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
 </head>
 
 <body class="" id="top">
-    <script>
-        if (localStorage.getItem("pref-theme") === "dark") {
-            document.body.classList.add('dark');
-        } else if (localStorage.getItem("pref-theme") === "light") {
-            document.body.classList.remove('dark')
-        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            document.body.classList.add('dark');
-        }
-    </script>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
 
-    <header class="header">
-        <nav class="nav">
-            <div class="logo">
-                <a href="https://einspommes.github.io/" accesskey="h" title="Sytriz's Blog (Alt + H)">Chill-zone Blog</a>
-                <div class="logo-switches">
-                    <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                        </svg>
-                        <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="5"></circle>
-                            <line x1="12" y1="1" x2="12" y2="3"></line>
-                            <line x1="12" y1="21" x2="12" y2="23"></line>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                            <line x1="1" y1="12" x2="3" y2="12"></line>
-                            <line x1="21" y1="12" x2="23" y2="12"></line>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                        </svg>
-                    </button>
-                </div>
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.sytriz.com/" accesskey="h" title="Sytriz&#39;s Blog (Alt + H)">Sytriz&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
             </div>
-            <ul id="menu">
-                <li>
-                    <a href="https://einspommes.github.io/categories/" title="Categories">
-                        <span>Categories</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://einspommes.github.io/tags/" title="Tags">
-                        <span>Tags</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://einspommes.github.io/archives/" title="Archives">
-                        <span>Archives</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <main class="main">
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://blog.sytriz.com/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.sytriz.com/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.sytriz.com/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
 
-        <article class="post-single">
-            <header class="post-header">
-                <div class="breadcrumbs"><a href="https://einspommes.github.io/">Home</a>&nbsp;&raquo;&nbsp;<a href="https://einspommes.github.io/posts/">Posts</a></div>
-                <h1 class="post-title entry-hint-parent">
-                    My First Post
-                </h1>
-                <div class="post-meta"><span title='2024-09-27 09:56:49 -0500 CDT'>September 27, 2024</span></div>
-            </header>
-            <div class="post-content">
-                <h1 id="lecture-syslog">Lecture: Syslog</h1>
-                <h2 id="overview">Overview</h2>
-                <ul>
-                    <li>Syslog is an industry standard protocol for message logging</li>
-                    <li>On network devices, Syslog can be used to log events such as changes in interface status (up/down), changes in OSPF neighbor status, system restarts, etc.</li>
-                    <li>The messages can be displayed in the CLI, saved in the devices RAM, or sent to an external Syslog server</li>
-                    <li>Logs are essential when troubleshooting issues, examining the cause of incidents, etc.</li>
-                    <li>Syslog and SNMP are both used for monitoring and troubleshooting devices. They are complementary, but their functionalities are different</li>
-                </ul>
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://blog.sytriz.com/">Home</a>&nbsp;»&nbsp;<a href="https://blog.sytriz.com/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      New Blog!
+    </h1>
+    <div class="post-meta"><span title='2024-09-27 10:02:51 -0500 CDT'>September 27, 2024</span>
 
-                <h2 id="message-format">Message Format</h2>
-                <p><code>seq:time stamp: %facility-severity-MNEMONIC:description</code></p>
-                <ul>
-                    <li><strong>Sequence number</strong> - indicates the order/sequence of messages</li>
-                    <li><strong>Timestamp</strong> - indicates the time the message was generated</li>
-                    <li><strong>Facility</strong> - indicates which process on the device generated the message</li>
-                    <li><strong>Severity</strong> - indicates the severity level of the logged event (8 levels)</li>
-                    <li><strong>Mnemonic</strong> - short code for the message indicating what happened</li>
-                    <li><strong>Description</strong> - detailed information about the event being reported</li>
-                </ul>
+</div>
+  </header> 
+<figure class="entry-cover"><a href="https://blog.sytriz.com/img/ethernet-port1.png" target="_blank"
+            rel="noopener noreferrer"><img loading="eager" src="https://blog.sytriz.com/img/ethernet-port1.png" alt=""></a>
+        
+</figure>
 
-                <h2 id="severity-levels">Severity Levels</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="text-align: left">Level</th>
-                            <th style="text-align: left">Keyword</th>
-                            <th style="text-align: left">Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="text-align: left">0</td>
-                            <td style="text-align: left">Emergency</td>
-                            <td style="text-align: left">System is unusable</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: left">1</td>
-                            <td style="text-align: left">Alert</td>
-                            <td style="text-align: left">Action must be taken immediately</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: left">2</td>
-                            <td style="text-align: left">Critical</td>
-                            <td style="text-align: left">Critical conditions</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: left">3</td>
-                            <td style="text-align: left">Error</td>
-                            <td style="text-align: left">Error conditions</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: left">4</td>
-                            <td style="text-align: left">Warning</td>
-                            <td style="text-align: left">Warning conditions</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: left">5</td>
-                            <td style="text-align: left">Notice</td>
-                            <td style="text-align: left">Normal but significant condition</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: left">6</td>
-                            <td style="text-align: left">Informational</td>
-                            <td style="text-align: left">Informational messages</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: left">7</td>
-                            <td style="text-align: left">Debugging</td>
-                            <td style="text-align: left">Debug-level messages</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <ul>
-                    <li>Severity levels are subjective and vary by vendor interpretation</li>
-                </ul>
-
-                <h2 id="logging-locations">Logging Locations</h2>
-                <ul>
-                    <li><strong>Console line</strong> - Syslog messages will be displayed in the CLI when connected to the device via the console port.</li>
-                    <li><strong>VTY lines</strong> - Syslog messages will be displayed in the CLI when connected to the device via Telnet/SSH; disabled by default.</li>
-                    <li><strong>Buffer</strong> - Syslog messages can be saved to RAM. You can view messages in the buffer with <code>show logging</code>.</li>
-                    <li><strong>External server</strong> - Syslog messages can be sent to an external server for central monitoring.</li>
-                </ul>
-            </div>
-
-            <footer class="post-footer">
-                <ul class="post-tags">
-                </ul>
-            </footer>
-        </article>
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
     </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="https://blog.sytriz.com/">Sytriz&#39;s Blog</a></span> · 
 
-    <footer class="footer">
-        <span>&copy; 2024 <a href="https://einspommes.github.io/">chill-zone Blog</a></span> &middot;
-        <span>
-            Powered by
-            <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-            <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-        </span>
-    </footer>
-    <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-            <path d="M12 6H0l6-6z" />
-        </svg>
-    </a>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
 
-    <script>
-        let menu =
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
