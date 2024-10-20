@@ -1,3 +1,10 @@
+---
+title: "Tunneling a Mailcow Server through Wireguard"
+date: 2024-09-27
+author: "Mika"
+tags: ["wireguard", "mailcow", "tunneling"]
+---
+
 # Tunneling a Mailcow server through Wireguard
 
 Mailcow is a easy to set up Mailserver running in Docker.
