@@ -1,143 +1,251 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en" dir="auto">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Erster Blog Post</title>
+    <script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="noindex, nofollow">
+    <title>My First Post | chill-zone Blog</title>
+    <meta name="description" content="Lecture: Syslog Overview and its importance in network troubleshooting and monitoring.">
+    <meta name="author" content="Sytriz">
+    <link rel="canonical" href="https://einspommes.github.io/posts/Tunneling%20a%20Mailcow%20server%20through%20Wireguard/">
+    <link crossorigin="anonymous" href="/assets/css/stylesheet.54405a410796490bc874ab6181fac9b675753cc2b91375d8f882566459eca428.css" integrity="sha256-VEBaQQeWSQvIdKthgfrJtnV1PMK5E3XY&#43;IJWZFnspCg=" rel="preload stylesheet" as="style">
+    <link rel="icon" href="https://blog.sytriz.com/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://einspommes.github.io/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://einspommes.github.io/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="https://einspommes.github.io/apple-touch-icon.png">
+    <link rel="mask-icon" href="https://einspommes.github.io/safari-pinned-tab.svg">
+    <meta name="theme-color" content="#2e2e33">
+    <meta name="msapplication-TileColor" content="#2e2e33">
+    <link rel="alternate" hreflang="en" href="https://einspommes.github.io/posts/Tunneling%20a%20Mailcow%20server%20through%20Wireguard/">
+    
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-    <style>
-        body {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-    </style>
+    <noscript>
+        <style>
+            #theme-toggle,
+            .top-link {
+                display: none;
+            }
+        </style>
+        <style>
+            @media (prefers-color-scheme: dark) {
+                :root {
+                    --theme: rgb(29, 30, 32);
+                    --entry: rgb(46, 46, 51);
+                    --primary: rgb(218, 218, 219);
+                    --secondary: rgb(155, 156, 157);
+                    --tertiary: rgb(65, 66, 68);
+                    --content: rgb(196, 196, 197);
+                    --code-block-bg: rgb(46, 46, 51);
+                    --code-bg: rgb(55, 56, 62);
+                    --border: rgb(51, 51, 51);
+                }
 
-    <style>
-        body {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: url('bg.png') no-repeat center center fixed;
-            background-size: cover;
-            color: #fff; /* White text color */
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+                .list {
+                    background: var(--theme);
+                }
 
-        header {
-            background-color: rgba(0, 0, 0, 0.5); /* Transparent black background */
-            padding: 20px;
-            text-align: center;
-            box-shadow: none; /* Removed box shadow */
-            border-radius: 20px;
-            margin: 20px;
-        }
+                .list:not(.dark)::-webkit-scrollbar-track {
+                    background: 0 0;
+                }
 
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-            color: #fff; /* White text color */
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.5); /* Transparent black background */
-            border-radius: 20px;
-            box-shadow: none; /* Removed box shadow */
-            flex: 1;
-        }
-
-        .blog-post {
-            margin-bottom: 30px;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.3); /* More transparent black background */
-            border-radius: 15px;
-            box-shadow: none; /* Removed box shadow */
-            transition: transform 0.2s ease-in-out;
-        }
-
-        .blog-post:hover {
-            transform: translateY(-5px);
-        }
-
-        .blog-post h2 {
-            font-size: 1.8em;
-            margin-bottom: 10px;
-            color: #fff; /* White text color */
-        }
-
-        .blog-post p {
-            font-size: 1.1em;
-            color: #ddd; /* Light gray text color */
-        }
-
-        .blog-post a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        .blog-post a:hover {
-            text-decoration: underline;
-        }
-
-        .blog-post img {
-            width: 100%;
-            border-radius: 10px;
-            margin-bottom: 15px;
-        }
-
-        footer {
-            background-color: rgba(0, 0, 0, 0.5); /* Transparent black background */
-            color: #fff; /* White text color */
-            padding: 10px 0;
-            text-align: center;
-            border-radius: 20px;
-            box-shadow: none; /* Removed box shadow */
-            margin: 20px;
-    </style>
+                .list:not(.dark)::-webkit-scrollbar-thumb {
+                    border-color: var(--theme);
+                }
+            }
+        </style>
+    </noscript>
 </head>
-<body>
-    <div class="container">
-        <h1>how to Tunneling a Mailcow server through Wireguard</h1>
-        <p>July 18, 2024 · By Mika · 13 minutes </p>
-        <!-- Der Gist-Script wird hier eingefügt -->
-        <script src="https://gist.github.com/EinsPommes/3e18398ca50cfd38e7fdd3b36a38cc66.js"></script>
-    </div>
-    <footer>
-        &copy; ߍ㊠   </footer>
 
-    <script>
-        document.addEventListener('contextmenu', function (e) {
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark');
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://einspommes.github.io/" accesskey="h" title="chill-zone Blog (Alt + H)">chill-zone Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://einspommes.github.io/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://einspommes.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://einspommes.github.io/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://einspommes.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://einspommes.github.io/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      How to Tunneling a Mailcow server through Wireguard
+    </h1>
+    <div class="post-meta"><span title='2024-07-18'>July 18, 2024</span> · By Mika · 13 minutes</div>
+  </header> 
+
+  <div class="container">
+    <div id="content"></div>
+    <div id="script-content"></div>
+    <div id="script-smtp"></div>
+    <div id="script-wg-mailcow"></div>
+    <div id="script-wg"></div>
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+        <li><a href="https://einspommes.github.io/tags/wireguard/" rel="tag">Wireguard</a></li>
+        <li><a href="https://einspommes.github.io/tags/mailcow/" rel="tag">Mailcow</a></li>
+        <li><a href="https://einspommes.github.io/tags/tunneling/" rel="tag">Tunneling</a></li>
+    </ul>
+  </footer>
+</article>
+</main>
+
+<footer class="footer">
+    <span>&copy; 2024 <a href="https://einspommes.github.io/">chill-zone Blog</a></span> · 
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        };
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
             e.preventDefault();
+            var id = this.getAttribute("href").substring(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
         });
-
-        document.onkeydown = function (e) {
-            if (e.keyCode == 123) {
-                return false;
-            }
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-                return false;
-            }
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-                return false;
-            }
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-                return false;
-            }
-            if (e.ctrlKey && e.keyCode == 'C'.charCodeAt(0)) {
-                return false;
-            }
+    });
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
         }
-    </script>
+    };
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.classList.contains("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    });
+</script>
+<script>
+    async function loadMarkdown(file) {
+        try {
+            const response = await fetch(file);
+            if (!response.ok) {
+                throw new Error('Network response was not OK');
+            }
+            const text = await response.text();
+            const html = marked(text);
+            document.getElementById('content').innerHTML = html;
+        } catch (error) {
+            console.error('Error loading the Markdown file:', error);
+        }
+    }
 
+    loadMarkdown('https://raw.githubusercontent.com/EinsPommes/einspommes.github.io/main/posts/Tunneling%20a%20Mailcow%20server%20through%20Wireguard/mailcow_wg.md');
+    loadScriptContent('https://raw.githubusercontent.com/EinsPommes/einspommes.github.io/main/posts/Tunneling%20a%20Mailcow%20server%20through%20Wireguard/smtp-iptables.sh', 'script-smtp');
+    loadScriptContent('https://raw.githubusercontent.com/EinsPommes/einspommes.github.io/main/posts/Tunneling%20a%20Mailcow%20server%20through%20Wireguard/wg-mailcow.conf', 'script-wg-mailcow');
+    loadScriptContent('https://raw.githubusercontent.com/EinsPommes/einspommes.github.io/main/posts/Tunneling%20a%20Mailcow%20server%20through%20Wireguard/wg.conf', 'script-wg');
+</script>
+<script>
+    async function loadScriptContent(file, elementId) {
+        try {
+            const response = await fetch(file);
+            if (!response.ok) {
+                throw new Error('Network response was not OK');
+            }
+            const text = await response.text();
+            const html = `<pre><code>${text}</code></pre>`;
+            document.getElementById(elementId).innerHTML = html;
+        } catch (error) {
+            console.error('Error loading the script file:', error);
+        }
+    }
+</script>
 </body>
+
 </html>
