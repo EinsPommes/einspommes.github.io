@@ -1,0 +1,40 @@
+baseURL: https://example.org/
+languageCode: en-us
+title: Blog
+theme: [ PaperMod ]
+
+params:
+  homeInfoParams:
+    Title: "Chill-zone | Blog"
+    Content: >
+       👋 Welcome to my blog! Here, I write about things that interest me—whether it's technology, hobbies, or life in general. I hope you find something intriguing and enjoyable here too.
+    image: "images/favicon.ico"
+  socialIcons:
+    - name: github
+      title: View Source on Github
+      url: "https://github.com/EinsPommes"
+    - name: Discord
+      title: Join discord community
+      url: ""
+    - name: X
+      title: Share PaperMod on X/Twitter
+      url: "https://x.com/"
+    - name: KoFi
+      title: Buy me a Ko-Fi :)
+      url: "https://ko-fi.com/"
+
+menu:
+  main:
+    - identifier: home
+      name: Home
+      url: "/"
+      weight: 1
+    - identifier: blog
+      name: Blog
+      url: "/blog/"
+      weight: 2
+    - identifier: main
+      name: Website
+      url: "https://chill-zone.xyz"
+      weight: 3
+    
