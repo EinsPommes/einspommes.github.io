@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mika · ミカ</title>
 <meta name="description" content="Jannik aka Mika (EinsPommes) – developer, (un)professional pentester and InfoSec enthusiast from Germany.">
-<meta name="theme-color" content="#0b0912">
+<meta name="theme-color" content="#07060c">
 <meta property="og:title" content="Mika · ミカ">
 <meta property="og:description" content="Developer · Pentester · InfoSec">
 <meta property="og:type" content="website">
@@ -18,26 +18,29 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=JetBrains+Mono:wght@400;600;800&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0b0912; --panel:rgba(18,14,30,.72); --line:rgba(161,119,254,.28);
-  --text:#ece6ff; --muted:#a99cc9; --acc:#A177FE; --pink:#ff9ec8; --green:#8ef0b8;
+  --bg:#07060c; --panel:rgba(9,7,16,.78); --line:rgba(255,79,168,.32);
+  --text:#f3eefc; --muted:#b3a9c9; --acc:#ff4fa8; --pink:#ff4fa8; --cyan:#3ce7f0; --amber:#ffb63a; --green:#3ce7f0;
+  --glow:0 0 18px rgba(255,79,168,.55);
   --mono:'JetBrains Mono',ui-monospace,Consolas,monospace;
   --jp:'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--mono);line-height:1.65;overflow-x:hidden;min-height:100vh}
-#ascii{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block}
+/* tokyo rain background (ascii.rest) */
+.bg{position:fixed;inset:0;z-index:0;overflow:hidden;background:var(--bg);display:flex;align-items:center;justify-content:center}
+.bg ascii-art{display:block;flex:none;width:max(100vw,200vh)}
 .vignette{position:fixed;inset:0;z-index:1;pointer-events:none;
-  background:radial-gradient(ellipse at 50% 45%,rgba(11,9,18,0) 0%,rgba(11,9,18,.35) 70%,rgba(11,9,18,.8) 100%)}
+  background:linear-gradient(90deg,rgba(7,6,12,.82) 0%,rgba(7,6,12,.55) 45%,rgba(7,6,12,.25) 100%),radial-gradient(ellipse at 50% 50%,transparent 40%,rgba(7,6,12,.7) 100%)}
 main,nav,footer{position:relative;z-index:2}
 a{color:inherit}
 ::selection{background:var(--acc);color:#fff}
 
 nav{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;
   padding:14px clamp(16px,5vw,56px);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-  background:rgba(11,9,18,.55);border-bottom:1px solid var(--line)}
+  background:rgba(7,6,12,.6);border-bottom:1px solid var(--line)}
 nav .logo{font-weight:800;text-decoration:none;letter-spacing:.5px}
-nav .logo span{color:var(--acc)}
+nav .logo span{color:var(--acc);text-shadow:var(--glow)}
 nav ul{display:flex;gap:clamp(12px,3vw,28px);list-style:none}
 nav ul a{text-decoration:none;color:var(--muted);font-size:14px;transition:color .2s}
 nav ul a:hover{color:var(--acc)}
@@ -47,43 +50,44 @@ section{padding:clamp(56px,9vw,96px) 0}
 
 /* hero */
 .hero{min-height:calc(100vh - 60px);padding-top:24px;padding-bottom:24px;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
-.pill{display:inline-block;font-size:13px;letter-spacing:2px;color:#e2d6ff;border:1px solid var(--acc);
-  background:rgba(161,119,254,.14);border-radius:999px;padding:4px 14px;margin-bottom:22px}
+.pill{display:inline-block;font-size:13px;letter-spacing:2px;color:#ffe3f1;border:1px solid var(--acc);box-shadow:var(--glow);
+  background:rgba(255,79,168,.14);border-radius:999px;padding:4px 14px;margin-bottom:22px}
 .pill .jp{font-family:var(--jp)}
 h1{font-size:clamp(40px,6.4vw,72px);white-space:nowrap;line-height:1.05;font-weight:800;letter-spacing:-1px;
-  background:linear-gradient(90deg,#fff 0%,#e3d2ff 55%,var(--acc) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-h1 .slash{-webkit-text-fill-color:var(--acc)}
+  background:linear-gradient(90deg,#fff 0%,#ffd1e8 45%,var(--acc) 75%,var(--cyan) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+h1 .slash{-webkit-text-fill-color:var(--cyan)}
+h1{filter:drop-shadow(0 0 22px rgba(255,79,168,.35))}
 .sub-jp{font-family:var(--jp);color:var(--muted);letter-spacing:4px;margin-top:10px}
 .bar{height:3px;width:min(420px,80%);margin:22px 0;border-radius:2px;
-  background:linear-gradient(90deg,transparent,var(--acc) 20%,var(--pink) 80%,transparent)}
+  background:linear-gradient(90deg,transparent,var(--acc) 20%,var(--cyan) 80%,transparent);box-shadow:var(--glow)}
 .role{font-size:clamp(17px,2.2vw,22px);font-weight:600}
 .term{margin-top:14px;color:var(--green);font-size:15px;min-height:1.6em}
-.term .cmd{color:#d9ccff}
+.term .cmd{color:#ffd1e8}
 .cursor{display:inline-block;width:.6em;height:1.1em;background:#fff;vertical-align:-3px;margin-left:2px;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
 .btn{font-family:var(--mono);font-size:14px;font-weight:600;text-decoration:none;padding:11px 20px;border-radius:10px;
   border:1px solid var(--acc);transition:transform .15s,background .2s,box-shadow .2s}
-.btn.primary{background:var(--acc);color:#140c26}
-.btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(161,119,254,.35)}
-.btn.ghost{background:rgba(161,119,254,.08)}
+.btn.primary{background:var(--acc);color:#14040c;box-shadow:var(--glow)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 0 26px rgba(255,79,168,.6)}
+.btn.ghost{background:rgba(60,231,240,.08);border-color:var(--cyan);color:var(--cyan)}
 .portrait{position:relative;justify-self:center;width:min(360px,100%)}
 .portrait img{width:100%;display:block;animation:float 6s ease-in-out infinite;
-  -webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 48%,#000 62%,transparent 100%);
-          mask-image:radial-gradient(ellipse 50% 50% at 50% 48%,#000 62%,transparent 100%)}
+  -webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 48%,#000 40%,transparent 92%);
+          mask-image:radial-gradient(ellipse 50% 50% at 50% 48%,#000 40%,transparent 92%)}
 .portrait::before{content:"";position:absolute;inset:-30px;border-radius:50%;z-index:-1;
-  background:radial-gradient(circle,rgba(161,119,254,.28),transparent 62%)}
+  background:radial-gradient(circle,rgba(255,79,168,.3),rgba(60,231,240,.08) 45%,transparent 65%)}
 @keyframes float{50%{transform:translateY(-10px)}}
 
 /* section heads */
 .head{display:flex;align-items:baseline;gap:16px;margin-bottom:34px;flex-wrap:wrap}
 .head h2{font-family:'Dancing Script',cursive;font-size:clamp(38px,6vw,56px);font-weight:700;color:#fff;
-  text-shadow:0 2px 18px rgba(161,119,254,.55)}
-.head .jp{font-family:var(--jp);color:var(--acc);opacity:.85;letter-spacing:3px}
+  text-shadow:0 0 10px rgba(255,79,168,.9),0 0 30px rgba(255,79,168,.5)}
+.head .jp{font-family:var(--jp);color:var(--cyan);text-shadow:0 0 10px rgba(60,231,240,.6);opacity:.85;letter-spacing:3px}
 .head .rule{flex:1;min-width:60px;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
 
 .card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:clamp(20px,3vw,30px);
-  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 
 /* about */
 .about{display:grid;grid-template-columns:1fr 1fr;gap:22px}
@@ -92,24 +96,24 @@ h1 .slash{-webkit-text-fill-color:var(--acc)}
 .kv .k{color:var(--acc)}
 .kv .k::after{content:":";color:var(--muted)}
 .code{font-size:14px;white-space:pre-wrap;color:#cfc4ea}
-.code .c{color:#6f6590}.code .s{color:var(--green)}.code .p{color:var(--pink)}.code .a{color:var(--acc)}
-.note{margin-top:22px;font-size:14px;color:var(--muted);border-left:3px solid var(--acc);padding-left:14px}
+.code .c{color:#6f6590}.code .s{color:var(--amber)}.code .p{color:var(--cyan)}.code .a{color:var(--acc)}
+.note{margin-top:22px;font-size:14px;color:var(--muted);border-left:3px solid var(--acc);padding:10px 14px;background:var(--panel);border-radius:0 10px 10px 0}
 
 /* projects */
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .proj{display:flex;flex-direction:column;gap:10px;text-decoration:none;transition:transform .2s,border-color .2s}
-.proj:hover{transform:translateY(-4px);border-color:var(--acc)}
+.proj:hover{transform:translateY(-4px);border-color:var(--cyan);box-shadow:0 0 24px rgba(60,231,240,.25)}
 .proj .top{display:flex;justify-content:space-between;align-items:center;gap:10px}
 .proj h3{font-size:18px}
 .proj h3 span{color:var(--muted);font-weight:400}
 .proj p{color:var(--muted);font-size:14px}
 .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
-.tag{font-size:12px;padding:3px 10px;border-radius:999px;background:rgba(161,119,254,.12);border:1px solid var(--line);color:#d9ccff}
-.arrow{color:var(--acc);font-size:20px}
+.tag{font-size:12px;padding:3px 10px;border-radius:999px;background:rgba(255,79,168,.1);border:1px solid var(--line);color:#ffd1e8}
+.arrow{color:var(--cyan);font-size:20px}
 
 /* stack */
 .stack{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.stack h3{font-size:15px;color:var(--acc);margin-bottom:14px;letter-spacing:1px}
+.stack h3{font-size:15px;color:var(--amber);margin-bottom:14px;letter-spacing:1px}
 .stack .tags{gap:10px}
 .stack .tag{font-size:13px;padding:5px 12px}
 
@@ -119,7 +123,7 @@ h1 .slash{-webkit-text-fill-color:var(--acc)}
 .contact .btns{justify-content:center}
 
 footer{text-align:center;padding:40px 16px 50px;color:var(--muted);font-size:13px}
-footer .jp{font-family:var(--jp);color:var(--acc);font-size:18px;display:block;margin-bottom:6px}
+footer .jp{font-family:var(--jp);color:var(--acc);text-shadow:var(--glow);font-size:18px;display:block;margin-bottom:6px}
 
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
 .reveal.in{opacity:1;transform:none}
@@ -138,7 +142,7 @@ footer .jp{font-family:var(--jp);color:var(--acc);font-size:18px;display:block;m
 </style>
 </head>
 <body>
-<canvas id="ascii" aria-hidden="true"></canvas>
+<div class="bg" aria-hidden="true"><ascii-art piece="tokyo-rain" label="a tokyo side street in the rain, neon signs shining on the wet road"></ascii-art></div>
 <div class="vignette"></div>
 
 <nav>
@@ -251,70 +255,14 @@ footer .jp{font-family:var(--jp);color:var(--acc);font-size:18px;display:block;m
 
 <footer>
   <span class="jp">ありがとう!</span>
-  stay curious · hack responsibly · <span id="year"></span> EinsPommes
+  stay curious · hack responsibly · <span id="year"></span> EinsPommes<br>
+  <small>background: <a href="https://ascii.rest/tokyo-rain/" target="_blank" rel="noopener">tokyo rain</a> by <a href="https://github.com/bas3line/ascii" target="_blank" rel="noopener">ascii.rest</a> (MIT)</small>
 </footer>
 
+<script type="module" src="https://cdn.jsdelivr.net/npm/ascii.rest@0.4.0/dist/ascii.js" integrity="sha384-SBNELtJu9hcp9Nd2BljjmOuQ4VUromhUiD1ENpl5swn1R1vJCH7/qR3BsQmmOJZA" crossorigin="anonymous"></script>
 <script>
 (() => {
-  // ---------- ASCII background ----------
-  const cv = document.getElementById('ascii'), ctx = cv.getContext('2d');
-  const RAMP = " .,:;-~=+*!?#%$&@";           // dark -> bright
-  const GLYPHS = "01<>/\\{}[]()#$%&*+=-_;:!?";  // flicker set
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let W, H, cols, rows, cell, dpr, t = 0, mouse = {x: -1e4, y: -1e4}, drops = [];
-
-  function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    W = innerWidth; H = innerHeight;
-    cv.width = W * dpr; cv.height = H * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    cell = W < 600 ? 12 : 15;
-    cols = Math.ceil(W / (cell * .62)); rows = Math.ceil(H / cell);
-    ctx.font = `${cell}px 'JetBrains Mono', monospace`;
-    ctx.textBaseline = 'top';
-    drops = Array.from({length: Math.ceil(cols / 6)}, () => ({c: Math.random() * cols | 0, r: Math.random() * rows, v: .15 + Math.random() * .35}));
-  }
-
-  function frame() {
-    t += reduce ? 0 : 0.012;
-    ctx.fillStyle = '#0b0912'; ctx.fillRect(0, 0, W, H);
-    const cw = W / cols;
-    for (let y = 0; y < rows; y++) {
-      for (let x = 0; x < cols; x++) {
-        const px = x * cw, py = y * cell;
-        // layered waves = soft plasma field
-        let v = Math.sin(x * .09 + t * 1.3) + Math.sin(y * .13 - t) + Math.sin((x + y) * .05 + t * .7)
-              + Math.sin(Math.hypot(x - cols * .7, y - rows * .35) * .12 - t * 2);
-        v = (v + 4) / 8;
-        const d = Math.hypot(px - mouse.x, py - mouse.y);
-        if (d < 160) v += (1 - d / 160) * .55;
-        v = Math.min(1, Math.max(0, v));
-        const i = Math.floor(v * v * (RAMP.length - 1));
-        if (i === 0) continue;
-        const a = .1 + v * v * .6;
-        const mix = (x / cols);
-        const r = Math.round(161 + (255 - 161) * mix * .5), g = Math.round(119 + (158 - 119) * mix * .5), b = Math.round(254 - (254 - 200) * mix * .5);
-        ctx.fillStyle = `rgba(${r},${g},${b},${a})`;
-        ctx.fillText(RAMP[i], px, py);
-      }
-    }
-    // falling code streams
-    for (const dr of drops) {
-      for (let k = 0; k < 10; k++) {
-        const ry = Math.floor(dr.r) - k; if (ry < 0 || ry >= rows) continue;
-        ctx.fillStyle = k === 0 ? 'rgba(236,230,255,.75)' : `rgba(142,240,184,${.32 * (1 - k / 10)})`;
-        ctx.fillText(GLYPHS[(ry * 7 + dr.c * 13 + (t * 20 | 0)) % GLYPHS.length], dr.c * cw, ry * cell);
-      }
-      if (!reduce) { dr.r += dr.v; if (dr.r - 10 > rows) { dr.r = 0; dr.c = Math.random() * cols | 0; } }
-    }
-    if (!reduce) requestAnimationFrame(frame);
-  }
-
-  addEventListener('resize', () => { resize(); if (reduce) frame(); });
-  addEventListener('pointermove', e => { mouse.x = e.clientX; mouse.y = e.clientY; if (reduce) frame(); });
-  addEventListener('pointerleave', () => { mouse.x = mouse.y = -1e4; });
-  resize();
-  (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { resize(); frame(); });
 
   // ---------- typing terminal ----------
   const lines = ['whoami --curious', 'nmap -sV target --with-permission', 'cat ./motto.txt', 'echo "break it, understand it, make it better"'];
