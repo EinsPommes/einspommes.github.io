@@ -1,17 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url>
-    <loc>https://einspommes.github.io/categories/</loc>
-  </url><url>
-    <loc>https://einspommes.github.io/1313/</loc>
-  </url><url>
-    <loc>https://einspommes.github.io/tags/</loc>
-  </url><url>
-    <loc>https://einspommes.github.io/posts/</loc>
-  </url><url>
-    <loc>https://einspommes.github.io/posts/first-post/</loc>
-  </url><url>
-    <loc>https://einspommes.github.io/posts/Tunneling%20a%20Mailcow%20server%20through%20Wireguard/</loc>
-  </url>
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://einspommes.github.io/</loc></url>
 </urlset>
